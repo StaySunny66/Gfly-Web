@@ -26,7 +26,7 @@ public class User {
     }
 
     public void setUser(String user) {
-        this.userid = user;
+        this.userid = userid;
     }
 
     public String getPassword() {

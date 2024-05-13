@@ -1,12 +1,10 @@
 package cn.shilight.gfly.entity;
 
 
-import java.util.Calendar;
 import java.util.Date;
-import java.util.Objects;
 
 // 响应实体类
-public class ResponseEntity {
+public class ResponseResult {
 
     private int code;
 
@@ -14,19 +12,19 @@ public class ResponseEntity {
 
     private Object obj;
 
-    public ResponseEntity() {
+    public ResponseResult() {
     }
 
-    public ResponseEntity(int code, Object obj) {
+    public ResponseResult(int code, Object obj) {
         this.code = code;
         this.date = (new Date()).toString();
         this.obj = obj;
     }
 
-    public static ResponseEntity ok(Object o){
+    public static ResponseResult ok(Object o){
 
-        ResponseEntity responseEntity = new ResponseEntity(200,o);
-        return responseEntity;
+        ResponseResult responseResult = new ResponseResult(200,o);
+        return responseResult;
 
     }
 
