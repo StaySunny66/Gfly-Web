@@ -5,6 +5,8 @@ import cn.shilight.gfly.entity.Senior;
 import cn.shilight.gfly.mapper.SeniorMapper;
 import cn.shilight.gfly.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,11 +18,50 @@ public class SeniorCnotroller {
     private SeniorMapper seniorMapper;
 
 
-    @PostMapping("/api/newSenior")
-    public ApiResponse insertSenior(){
+
+    @GetMapping("/api/getSeniors")
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ApiResponse getSeniors(){
         ApiResponse apiResponse = new ApiResponse(200,"ok",null);
 
-        Senior senior = new Senior(0,"测试",true,false,true,"huodd");
+        apiResponse.setData(seniorMapper.getAllSeniors());
+
+        return apiResponse;
+
+    }
+
+
+
+    @PostMapping("/api/deleteSenior")
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ApiResponse deleteSeniorById(int id){
+
+        System.out.println("id" + id);
+        ApiResponse apiResponse = new ApiResponse(200,"ok",null);
+        if(seniorMapper.deleteUser(id)!=1){
+
+            apiResponse.setStatus(300);
+            apiResponse.setMessage("err");
+
+        }
+            return apiResponse;
+
+
+    }
+
+    @PostMapping("/api/newSenior")
+    @CrossOrigin(origins = "http://localhost:5173")
+    public ApiResponse insertSenior(String name,boolean SeniorMapEn,boolean SeniorViewEn,boolean AutoEn,String Others){
+        ApiResponse apiResponse = new ApiResponse(200,"ok",null);
+        System.out.println("name " + name);
+
+        if(name.length()<2){
+            apiResponse.setStatus(300);
+            return apiResponse;
+
+
+        }
+        Senior senior = new Senior(0,name,SeniorMapEn,SeniorViewEn,AutoEn,Others);
 
         if(seniorMapper.insertSenior(senior)==1){
 
