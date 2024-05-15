@@ -30,6 +30,9 @@ dependencies {
     implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
+    implementation 'com.google.code.gson:gson:2.8.9' // 请替换为最新版本
+
+
 
 
 }
