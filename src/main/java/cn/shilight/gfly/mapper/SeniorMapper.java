@@ -18,6 +18,9 @@ public interface SeniorMapper {
     @Select("SELECT * FROM senior")
     List<Senior> getAllSeniors();
 
+    @Select("SELECT * FROM senior WHERE SeniorMapEn = TRUE")
+    List<Senior> getMapSeniors();
+
 
     @Delete("DELETE FROM senior WHERE SeniorId = #{SeniorId}")
     int deleteUser(int SeniorId);

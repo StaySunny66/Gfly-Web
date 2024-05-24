@@ -28,44 +28,20 @@ public class ValueDataController {
     public ApiResponse getMapData(String id,long time,int x){
         ApiResponse apiResponse = new ApiResponse(200,"ok",null);
 
-
         List<ValueData> valueData= valueDataMapper.getValueData(id);
-
-
         if(!valueData.isEmpty()){
-
-
             List<DataFeature> features = new LinkedList<>();
-
             for(int i = 0;i<valueData.size();i++){
-
                 features.add(new DataFeature(Double.parseDouble(valueData.get(i).getJD()),
                         Double.parseDouble(valueData.get(i).getWD()),
                         (int) (valueData.get(i).getValueData() * x)));
-
             }
-
             MapData mapData = new MapData(features);
-
             apiResponse.setData(mapData);
-
         }else {
-
             apiResponse.setStatus(300);
             apiResponse.setMessage("err");
-
         }
-
-
-
-
-
-
-
-
-
-
-
 
         return apiResponse;
 
@@ -77,8 +53,7 @@ public class ValueDataController {
     public ApiResponse seniorUpload(int seniorId, String valueName, String JD, String WD, long sampleTime, double valueData, String valueUnits){
         ApiResponse apiResponse = new ApiResponse(200,"ok",null);
 
-        System.out.println("dddd" + valueName);
-
+        //System.out.println("dddd" + valueName);
 
         ValueData value = new ValueData(
                 seniorId,

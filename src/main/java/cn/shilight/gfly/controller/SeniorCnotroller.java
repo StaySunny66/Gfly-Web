@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class SeniorCnotroller {
 
@@ -29,6 +31,25 @@ public class SeniorCnotroller {
         return apiResponse;
 
     }
+
+
+    
+    @GetMapping("/api/getMapSeniors")
+    @CrossOrigin(origins = "http://localhost:5173")
+    public  ApiResponse getMapSeniors(){
+
+        ApiResponse apiResponse = new ApiResponse(200,"ok",null);
+
+        apiResponse.setData(seniorMapper.getMapSeniors());
+
+        return apiResponse;
+
+
+
+
+    }
+
+
 
 
 
