@@ -19,6 +19,11 @@ public interface ValueDataMapper {
     public List<ValueData> getValueData(String seniorId);
 
 
+    @Select("SELECT * FROM `valuedata` WHERE `SeniorId` = #{seniorId} ORDER BY `ValueDataId`  DESC LIMIT 1;")
+    public ValueData getOneValueData(int seniorId);
+
+
+
 
 
 
